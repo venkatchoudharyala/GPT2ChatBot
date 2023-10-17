@@ -43,7 +43,12 @@ if st.session_state["LoginVal"]:
 	tokenizer = AutoTokenizer.from_pretrained("gpt2")
 	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 250)
 	with st.spinner("GPT2 is Thinking"):
-		MachineOP = prompter(prompt)
-		k = st.chat_message("assistant")
-		if MachineOP:
-			k.write(MachineOP[0]['generated_text'])
+		MachineOP1 = prompter(prompt)
+		MachineOP2 = prompter(prompt)
+		if MachineOP1 :
+			st.subheader("REPLY DRAFT 1")
+			st.write(MachineOP1[0]['generated_text'])
+		if MachineOP2 :
+			st.subheader("REPLY DRAFT 1")
+			st.write(MachineOP2[0]['generated_text'])
+
