@@ -11,6 +11,14 @@ hide_st_style = """
 
 st.markdown(hide_st_style, unsafe_allow_html = True)
 Page.main()
+if "user" in st.session_state:
+	UserDetails = st.session_state["user"]
+	#st.write(UserDetails)
+	st.session_state["LoginVal"] = True
+	Expand = st.sidebar.expander("Chats")
+
+else:
+	st.session_state["LoginVal"] = False
 
 prompts = ["Write a story about a robot who falls in love with a human.",
            "Write a poem about the beauty of nature.",
