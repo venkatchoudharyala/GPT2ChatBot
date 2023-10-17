@@ -8,7 +8,7 @@ hide_st_style = """
 		footer {visibility: hidden;}
   	</style>
   	"""
-warnings.filterwarnings("ignore")
+
 st.markdown(hide_st_style, unsafe_allow_html = True)
 Page.main()
 
