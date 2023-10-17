@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, pipeline, AutoModelForCausalLM
+import warnings
 
 hide_st_style = """
 		<style>
@@ -7,6 +8,7 @@ hide_st_style = """
 		footer {visibility: hidden;}
   	</style>
   	"""
+warnings.filterwarnings("ignore")
 
 st.markdown(hide_st_style, unsafe_allow_html = True)
 
