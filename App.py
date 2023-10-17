@@ -14,7 +14,6 @@ st.markdown(hide_st_style, unsafe_allow_html = True)
 
 prompts = ["Write a story about a robot who falls in love with a human.",
            "Write a poem about the beauty of nature.",
-           "Write a code snippet to solve the following problem: [insert problem here].",
            "Write a letter to your future self.",
            "Write a news article about a recent scientific discovery.",
            "Write a song about your favorite animal.",
