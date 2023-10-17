@@ -12,9 +12,26 @@ warnings.filterwarnings("ignore")
 
 st.markdown(hide_st_style, unsafe_allow_html = True)
 
-st.subheader("For example, you can prompt GPT-2 to write a poem in the style of Shakespeare, or to generate a code snippet in a specific programming language.")
+prompts = ["Write a story about a robot who falls in love with a human.",
+           "Write a poem about the beauty of nature.",
+           "Write a code snippet to solve the following problem: [insert problem here].",
+           "Write a letter to your future self.",
+           "Write a news article about a recent scientific discovery.",
+           "Write a song about your favorite animal.",
+           "Write a script for a short film.",
+           "Write a blog post about the importance of recycling.",
+           "Write a marketing copy for a new product.",
+           "Write a technical document for a new software feature.",
+           "Write a creative story about a world where everyone has superpowers.",
+           "Write a horror story about a haunted house.",
+           "Write a mystery story about a missing person.",
+           "Write a science fiction story about a journey to another planet."]
+
+selected_prompt = st.selectbox("Select a prompt:", prompts)
 prompt = st.chat_input("Say Something")
 
+if selected_prompt:
+	prompt = selected_prompt
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 prompter = pipeline("text-generation", model = model, tokenizer = tokenizer)
