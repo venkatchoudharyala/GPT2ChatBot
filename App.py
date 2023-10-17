@@ -34,7 +34,7 @@ if selected_prompt and st.checkbox("Use Above Prompmts"):
 prompt = "For ur Specific Query " + Uprompt + " you have to"
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
-prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_length = max_length)
+prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 1000)
 MachineOP = prompter(prompt)
 k = st.chat_message("assistant")
 k.write(MachineOP[0]['generated_text'])
