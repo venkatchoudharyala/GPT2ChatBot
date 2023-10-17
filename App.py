@@ -31,7 +31,7 @@ Uprompt = st.chat_input("Say Something")
 
 if selected_prompt:
 	Uprompt = selected_prompt
-prompt = "For ur Specific Query" + Uprompt + "you have to"
+prompt = "For ur Specific Query " + Uprompt + " you have to"
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 prompter = pipeline("text-generation", model = model, tokenizer = tokenizer)
