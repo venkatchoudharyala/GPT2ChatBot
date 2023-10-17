@@ -40,7 +40,7 @@ if st.session_state["LoginVal"]:
 		prompt = selected_prompt
 	model = AutoModelForCausalLM.from_pretrained("gpt2")
 	tokenizer = AutoTokenizer.from_pretrained("gpt2")
-	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 150)
+	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 200)
 	with st.spinner("GPT2 is Thinking"):
 		if prompt:
 			MachineOP1 = prompter(prompt)
