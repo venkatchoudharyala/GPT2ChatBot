@@ -1,6 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, pipeline, AutoModelForCausalLM
-import warnings
+from ACCOUNTS import Page
 
 hide_st_style = """
 		<style>
@@ -9,8 +9,8 @@ hide_st_style = """
   	</style>
   	"""
 warnings.filterwarnings("ignore")
-
 st.markdown(hide_st_style, unsafe_allow_html = True)
+Page.main()
 
 prompts = ["Write a story about a robot who falls in love with a human.",
            "Write a poem about the beauty of nature.",
