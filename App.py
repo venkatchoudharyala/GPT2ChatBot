@@ -27,10 +27,11 @@ prompts = ["Write a story about a robot who falls in love with a human.",
            "Write a science fiction story about a journey to another planet."]
 
 selected_prompt = st.selectbox("Select a prompt:", prompts)
-prompt = st.chat_input("Say Something")
+Uprompt = st.chat_input("Say Something")
 
 if selected_prompt:
-	prompt = selected_prompt
+	Uprompt = selected_prompt
+prompt = "For ur Specific Query" + Uprompt + "you have to"
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 prompter = pipeline("text-generation", model = model, tokenizer = tokenizer)
