@@ -15,7 +15,7 @@ if "user" in st.session_state:
 	UserDetails = st.session_state["user"]
 	#st.write(UserDetails)
 	st.session_state["LoginVal"] = True
-	Expand = st.sidebar.expander("Chats")
+	#Expand = st.sidebar.expander("Chats")
 
 else:
 	st.session_state["LoginVal"] = False
