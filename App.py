@@ -10,7 +10,7 @@ hide_st_style = """
 
 st.markdown(hide_st_style, unsafe_allow_html = True)
 
-prompt = st.input("Say Something")
+prompt = st.chat_input("Say Something")
 
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
