@@ -1,4 +1,5 @@
 import streamlit as st
+import safetensors
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from ACCOUNTS import Page
 
