@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import T5Tokenizer, T5ForConditionalGeneration, pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from ACCOUNTS import Page
 
 hide_st_style = """
@@ -38,10 +38,10 @@ if st.session_state["LoginVal"]:
 	prompt = st.chat_input("Or say something Here")
 	if selected_prompt and st.checkbox("Use Above Prompts"):
 		prompt = selected_prompt
-	model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-xxl")
-	tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-xxl")
+	model =  AutoModelForCausalLM.from_pretrained("gpt2-large")
+	tokenizer = AutoTokenizer.from_pretrained("gpt2-large")
 	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 200)
-	with st.spinner("FLAN T5 XXL is Thinking"):
+	with st.spinner("GPT2 L is Thinking"):
 		if prompt:
 			MachineOP1 = prompter(prompt)
 			MachineOP2 = prompter(prompt)
