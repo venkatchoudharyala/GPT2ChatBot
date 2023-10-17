@@ -29,7 +29,7 @@ prompts = ["Write a story about a robot who falls in love with a human.",
 selected_prompt = st.selectbox("Select a prompt:", prompts)
 Uprompt = st.chat_input("Say Something")
 
-if selected_prompt and st.checkbox("Use Above Prompmts"):
+if selected_prompt and st.checkbox("Use Above Prompmts", value = True):
 	Uprompt = selected_prompt
 prompt = "For ur Specific Query " + Uprompt + " you have to"
 model = AutoModelForCausalLM.from_pretrained("gpt2")
