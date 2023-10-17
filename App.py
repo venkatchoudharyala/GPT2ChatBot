@@ -36,22 +36,22 @@ if st.session_state["LoginVal"]:
 	
 	selected_prompt = st.selectbox("Select a prompt:", prompts)
 	prompt = st.chat_input("Say Something")
-	
 	if selected_prompt and st.checkbox("Use Above Prompts", value = True):
 		prompt = selected_prompt
 	model = AutoModelForCausalLM.from_pretrained("gpt2")
 	tokenizer = AutoTokenizer.from_pretrained("gpt2")
 	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 250)
 	with st.spinner("GPT2 is Thinking"):
-		MachineOP1 = prompter(prompt)
-		MachineOP2 = prompter(prompt)
-		Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE - 1", "RESPONSE - 2"])
-		with Frame1:
-			st.write("THIS IS A DISCLAIMER!!")
-		with Frame2:
-			st.subheader("REPLY DRAFT 1")
-			st.write(MachineOP1[0]['generated_text'])
-		with Frame3:
-			st.subheader("REPLY DRAFT 2")
-			st.write(MachineOP2[0]['generated_text'])
+		if prompt:
+			MachineOP1 = prompter(prompt)
+			MachineOP2 = prompter(prompt)
+			Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE - 1", "RESPONSE - 2"])
+			with Frame1:
+				st.write("THIS IS A DISCLAIMER!!")
+			with Frame2:
+				st.subheader("REPLY DRAFT 1")
+				st.write(MachineOP1[0]['generated_text'])
+			with Frame3:
+				st.subheader("REPLY DRAFT 2")
+				st.write(MachineOP2[0]['generated_text'])
 
