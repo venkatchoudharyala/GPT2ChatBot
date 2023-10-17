@@ -44,6 +44,6 @@ if st.session_state["LoginVal"]:
 	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 500)
 	MachineOP = prompter(prompt)
 	k = st.chat_message("assistant")
-	with st.spinner("GPT2 is Thinking):
+	with st.spinner("GPT2 is Thinking"):
 		if MachineOP:
 			k.write(MachineOP[0]['generated_text'])
