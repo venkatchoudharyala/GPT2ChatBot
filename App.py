@@ -39,10 +39,10 @@ if st.session_state["LoginVal"]:
 	prompt = st.chat_input("Or say something Here")
 	if selected_prompt and st.checkbox("Use Above Prompts"):
 		prompt = selected_prompt
-	model =  AutoModelForCausalLM.from_pretrained("gpt2-large")
-	tokenizer = AutoTokenizer.from_pretrained("gpt2-large")
+	model =  AutoModelForCausalLM.from_pretrained("gpt2")
+	tokenizer = AutoTokenizer.from_pretrained("gpt2")
 	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 200)
-	with st.spinner("GPT2 L is Thinking"):
+	with st.spinner("GPT2 is Thinking"):
 		if prompt:
 			MachineOP1 = prompter(prompt)
 			MachineOP2 = prompter(prompt)
