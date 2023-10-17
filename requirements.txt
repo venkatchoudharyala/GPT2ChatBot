@@ -2,4 +2,3 @@ transformers
 torch
 bcrypt
 cryptography
-safetensors
