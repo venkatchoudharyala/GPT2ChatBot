@@ -35,12 +35,12 @@ if st.session_state["LoginVal"]:
 	           "Write a science fiction story about a journey to another planet."]
 	
 	selected_prompt = st.selectbox("Select a prompt:", prompts)
-	prompt = st.chat_input("Say Something")
-	if selected_prompt and st.checkbox("Use Above Prompts", value = True):
+	prompt = st.chat_input("Or say something Here")
+	if selected_prompt and st.checkbox("Use Above Prompts"):
 		prompt = selected_prompt
 	model = AutoModelForCausalLM.from_pretrained("gpt2")
 	tokenizer = AutoTokenizer.from_pretrained("gpt2")
-	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 250)
+	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 150)
 	with st.spinner("GPT2 is Thinking"):
 		if prompt:
 			MachineOP1 = prompter(prompt)
