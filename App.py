@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 
 st.markdown(hide_st_style, unsafe_allow_html = True)
 
-st.title("You can also use GPT-2 to generate different creative text formats,  like poems, code, scripts, musical pieces, email, letters, etc. For example, you can prompt GPT-2 to write a poem in the style of Shakespeare, or to generate a code snippet in a specific programming language.)
+st.subheader("You can also use GPT-2 to generate different creative text formats,  like poems, code, scripts, musical pieces, email, letters, etc. For example, you can prompt GPT-2 to write a poem in the style of Shakespeare, or to generate a code snippet in a specific programming language.)
 prompt = st.chat_input("Say Something")
 
 model = AutoModelForCausalLM.from_pretrained("gpt2")
