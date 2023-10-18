@@ -50,7 +50,7 @@ if st.session_state["LoginVal"]:
 			with Frame1:
 				st.write("DISCLAIMER!!")
                                 st.write(" This is an effort to showcase, the Rapid Evolution of AI")
-                                st.write("As the earlier version, GPT 2 may generate inconsistent results that are not Refined!!")
+                                st.write(" As the earlier version, GPT 2 may generate inconsistent results that are not Refined!!")
 			with Frame2:
 				st.subheader("REPLY DRAFT 1")
 				st.write(MachineOP1[0]['generated_text'])
