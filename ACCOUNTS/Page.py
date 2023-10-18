@@ -76,7 +76,7 @@ def SignUpPage():
 
 				Details = {"Name":UserName.strip(),"Chats":{},"Blocked":{UserName.strip():"1"},"Password":HashPasswd(Passd.strip())}
 				UDetails = json.dumps(Details)
-				Path = os.path.join("UserAcc", UserName + ".ua")
+				Path = os.path.join("UserAcc", UserName.strip() + ".ua")
 				with open(Path, "w") as File:
 					File.write(UDetails)
 
