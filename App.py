@@ -60,7 +60,6 @@ if st.session_state["LoginVal"]:
 		if selected_prompt and st.checkbox("Use Above Prompts", value = False):
 			prompt = selected_prompt
 	
-		st.write(prompt)
 		with st.spinner("GeminiAI is Thinking"):
 			if prompt:
 				response = model.generate_content(prompt)
@@ -68,7 +67,8 @@ if st.session_state["LoginVal"]:
 				Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
 				
 				with Frame1:
-					st.subheader("REPLY")
+					st.subheader("Replying to the Prompt")
+					st.write(Prompt)
 					st.write(to_markdown(response.text))
 				with Frame2:
 					st.subheader("Chat with Gemini")
