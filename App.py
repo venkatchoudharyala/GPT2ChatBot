@@ -12,7 +12,7 @@ from IPython.display import Markdown
 
 def to_markdown(text):
   text = text.replace('•', '  *')
-  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+  return textwrap.indent(text, '> ', predicate=lambda _: True)
 
 hide_st_style = """
 		<style>
@@ -67,7 +67,7 @@ if st.session_state["LoginVal"]:
 				#st.write(" Built on Hugging Face and Streamlit.")
 			with Frame2:
 				st.subheader("REPLY")
-				to_markdown(response.text)
+				st.markdown(to_markdown(response.text))
 			with Frame3:
 				st.subheader("Chat with Gemini")
 				st.write("In the Next Patch......")
