@@ -64,11 +64,11 @@ if st.session_state["LoginVal"]:
 			if prompt:
 				response = model.generate_content(prompt)
 				
-				Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
+				Frame1, Frame2, Frame3 = st.tabs(["QUERY", "CHAT", "DISCLAIMER"])
 				
 				with Frame1:
 					st.subheader("Replying to the Prompt")
-					st.write(Prompt)
+					st.write(prompt)
 					st.write(to_markdown(response.text))
 				with Frame2:
 					st.subheader("Chat with Gemini")
