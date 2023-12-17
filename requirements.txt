@@ -1,5 +1,4 @@
 google-generativeai
 pathlib
-textwrap
 bcrypt
 cryptography
