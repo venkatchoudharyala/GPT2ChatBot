@@ -1,4 +1,5 @@
-transformers
-torch
+google-generativeai
+pathlib
+textwrap
 bcrypt
 cryptography
