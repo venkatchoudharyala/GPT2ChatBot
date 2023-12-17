@@ -70,5 +70,5 @@ if st.session_state["LoginVal"]:
 			with Frame3:
 				st.write("DISCLAIMER!!")
 				st.write(" This is an effort to showcase, the Rapid Evolution of AI")
-				#st.write(" Exported from Google's GenerativeAI")
+				st.write(" Exported from Google's GenerativeAI")
 
