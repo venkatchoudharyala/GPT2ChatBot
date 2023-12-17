@@ -1,5 +1,6 @@
 import streamlit as st
 from ACCOUNTS import Page
+import AdminPanel as ap
 
 import pathlib
 import textwrap
@@ -32,43 +33,47 @@ if "user" in st.session_state:
 else:
 	st.session_state["LoginVal"] = False
 if st.session_state["LoginVal"]:
-	prompts = ["Write a program for tower of Hanoi problem in python.",
-	           "Explain concepts of DSA in nutshell.",
-	           "Can I know about your model architecture.",
-	           "Write a news article about a recent scientific discovery.",
-	           "Write a song about your favorite animal.",
-	           "Write a script for a short film.",
-	           "Write a blog post about the importance of recycling.",
-	           "Write a marketing copy for a new product.",
-	           "Write a technical document for a new software feature.",
-	           "Write a creative story about a world where everyone has superpowers.",
-	           "Write a horror story about a haunted house.",
-	           "Write a mystery story about a missing person.",
-	           "Write a science fiction story about a journey to another planet."]
+	UserName = UserDetails["Name"]
+	if UserName == "Admin":
+		ap.Scrapper()
+	else:
+		prompts = ["Write a program for tower of Hanoi problem in python.",
+		           "Explain concepts of DSA in nutshell.",
+		           "Can I know about your model architecture.",
+		           "Write a news article about a recent scientific discovery.",
+		           "Write a song about your favorite animal.",
+		           "Write a script for a short film.",
+		           "Write a blog post about the importance of recycling.",
+		           "Write a marketing copy for a new product.",
+		           "Write a technical document for a new software feature.",
+		           "Write a creative story about a world where everyone has superpowers.",
+		           "Write a horror story about a haunted house.",
+		           "Write a mystery story about a missing person.",
+		           "Write a science fiction story about a journey to another planet."]
+		
+		selected_prompt = st.selectbox("Select a prompt:", prompts)
+		prompt = st.chat_input("Or say something Here")
+		if selected_prompt and st.checkbox("Use Above Prompts", value = False):
+			prompt = selected_prompt
 	
-	selected_prompt = st.selectbox("Select a prompt:", prompts)
-	prompt = st.chat_input("Or say something Here")
-	if selected_prompt and st.checkbox("Use Above Prompts", value = False):
-		prompt = selected_prompt
-
-	genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
-
-	model = genai.GenerativeModel('gemini-pro')
+		genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
 	
-	with st.spinner("GeminiAI is Thinking"):
-		if prompt:
-			response = model.generate_content(prompt)
-			
-			Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
-			
-			with Frame1:
-				st.subheader("REPLY")
-				st.write(to_markdown(response.text))
-			with Frame2:
-				st.subheader("Chat with Gemini")
-				st.write("In the Next Patch......")
-			with Frame3:
-				st.write("DISCLAIMER!!")
-				st.write(" This is an effort to showcase, the Rapid Evolution of AI")
-				st.write(" Exported from Google's GenerativeAI")
+		model = genai.GenerativeModel('gemini-pro')
+		
+		with st.spinner("GeminiAI is Thinking"):
+			if prompt:
+				response = model.generate_content(prompt)
+				
+				Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
+				
+				with Frame1:
+					st.subheader("REPLY")
+					st.write(to_markdown(response.text))
+				with Frame2:
+					st.subheader("Chat with Gemini")
+					st.write("In the Next Patch......")
+				with Frame3:
+					st.write("DISCLAIMER!!")
+					st.write(" This is an effort to showcase, the Rapid Evolution of AI")
+					st.write(" Exported from Google's GenerativeAI")
 
