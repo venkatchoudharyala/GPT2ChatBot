@@ -55,12 +55,10 @@ if st.session_state["LoginVal"]:
 
 	model = genai.GenerativeModel('gemini-pro')
 	
-	response = model.generate_content(prompt)
-	
 	with st.spinner("GPT2 is Thinking"):
 		if prompt:
-			MachineOP1 = prompter(prompt)
-			MachineOP2 = prompter(prompt)
+			response = model.generate_content(prompt)
+			
 			Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE", "CHAT"])
 			with Frame1:
 				st.write("DISCLAIMER!!")
