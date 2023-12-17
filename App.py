@@ -48,7 +48,7 @@ if st.session_state["LoginVal"]:
 	
 	selected_prompt = st.selectbox("Select a prompt:", prompts)
 	prompt = st.chat_input("Or say something Here")
-	if selected_prompt and st.checkbox("Use Above Prompts"):
+	if selected_prompt and st.checkbox("Use Above Prompts", value = False):
 		prompt = selected_prompt
 
 	genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
@@ -59,16 +59,16 @@ if st.session_state["LoginVal"]:
 		if prompt:
 			response = model.generate_content(prompt)
 			
-			Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE", "CHAT"])
+			Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
+			
 			with Frame1:
-				st.write("DISCLAIMER!!")
-				st.write(" This is an effort to showcase, the Rapid Evolution of AI")
-				#st.write(" As the earlier version, GPT 2 may generate inconsistent results that are not Refined!!")
-				#st.write(" Built on Hugging Face and Streamlit.")
-			with Frame2:
 				st.subheader("REPLY")
 				st.write(to_markdown(response.text))
-			with Frame3:
+			with Frame2:
 				st.subheader("Chat with Gemini")
 				st.write("In the Next Patch......")
+			with Frame3:
+				st.write("DISCLAIMER!!")
+				st.write(" This is an effort to showcase, the Rapid Evolution of AI")
+				#st.write(" Exported from Google's GenerativeAI")
 
