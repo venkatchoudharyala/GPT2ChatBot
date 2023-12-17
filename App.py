@@ -62,6 +62,7 @@ if st.session_state["LoginVal"]:
 		
 		with st.spinner("GeminiAI is Thinking"):
 			if prompt:
+				st.write(prompt)
 				response = model.generate_content(prompt)
 				
 				Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
