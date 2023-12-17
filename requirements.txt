@@ -1,4 +1,5 @@
 google-generativeai
 pathlib
+ipython
 bcrypt
 cryptography
