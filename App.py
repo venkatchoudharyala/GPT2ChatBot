@@ -32,9 +32,9 @@ if "user" in st.session_state:
 else:
 	st.session_state["LoginVal"] = False
 if st.session_state["LoginVal"]:
-	prompts = ["Write a story about a robot who falls in love with a human.",
-	           "Write a poem about the beauty of nature.",
-	           "Write a letter to your future self.",
+	prompts = ["Write a program for tower of Hanoi problem in python.",
+	           "Explain concepts of DSA in nutshell.",
+	           "Can I know about your model architecture.",
 	           "Write a news article about a recent scientific discovery.",
 	           "Write a song about your favorite animal.",
 	           "Write a script for a short film.",
