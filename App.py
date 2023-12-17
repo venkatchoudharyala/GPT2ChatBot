@@ -55,7 +55,7 @@ if st.session_state["LoginVal"]:
 
 	model = genai.GenerativeModel('gemini-pro')
 	
-	with st.spinner("GPT2 is Thinking"):
+	with st.spinner("GeminiAI is Thinking"):
 		if prompt:
 			response = model.generate_content(prompt)
 			
@@ -67,7 +67,7 @@ if st.session_state["LoginVal"]:
 				#st.write(" Built on Hugging Face and Streamlit.")
 			with Frame2:
 				st.subheader("REPLY")
-				k = to_markdown(response.text))
+				k = to_markdown(response.text)
 				st.write(k)
 			with Frame3:
 				st.subheader("Chat with Gemini")
