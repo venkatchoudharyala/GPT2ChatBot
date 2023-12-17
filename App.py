@@ -1,7 +1,21 @@
 import streamlit as st
-import safetensors
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from ACCOUNTS import Page
+
+import pathlib
+import textwrap
+
+import google.generativeai as genai
+
+# Used to securely store your API key
+from google.colab import userdata
+
+from IPython.display import display
+from IPython.display import Markdown
+
+
+def to_markdown(text):
+  text = text.replace('•', '  *')
+  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 hide_st_style = """
 		<style>
@@ -39,23 +53,27 @@ if st.session_state["LoginVal"]:
 	prompt = st.chat_input("Or say something Here")
 	if selected_prompt and st.checkbox("Use Above Prompts"):
 		prompt = selected_prompt
-	model =  AutoModelForCausalLM.from_pretrained("gpt2")
-	tokenizer = AutoTokenizer.from_pretrained("gpt2")
-	prompter = pipeline("text-generation", model = model, tokenizer = tokenizer, max_new_tokens = 200)
+
+	genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
+
+	model = genai.GenerativeModel('gemini-pro')
+	
+	response = model.generate_content(prompt)
+	
 	with st.spinner("GPT2 is Thinking"):
 		if prompt:
 			MachineOP1 = prompter(prompt)
 			MachineOP2 = prompter(prompt)
-			Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE - 1", "RESPONSE - 2"])
+			Frame1, Frame2, Frame3 = st.tabs(["DISCLAIMER", "RESPONSE", "CHAT"])
 			with Frame1:
 				st.write("DISCLAIMER!!")
 				st.write(" This is an effort to showcase, the Rapid Evolution of AI")
-				st.write(" As the earlier version, GPT 2 may generate inconsistent results that are not Refined!!")
-				st.write(" Built on Hugging Face and Streamlit.")
+				#st.write(" As the earlier version, GPT 2 may generate inconsistent results that are not Refined!!")
+				#st.write(" Built on Hugging Face and Streamlit.")
 			with Frame2:
-				st.subheader("REPLY DRAFT 1")
-				st.write(MachineOP1[0]['generated_text'])
+				st.subheader("REPLY")
+				st.write(to_markdown(response.text))
 			with Frame3:
-				st.subheader("REPLY DRAFT 2")
-				st.write(MachineOP2[0]['generated_text'])
+				st.subheader("Chat with Gemini")
+				st.write("In the Next Patch......")
 
