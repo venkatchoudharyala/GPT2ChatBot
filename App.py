@@ -37,6 +37,10 @@ if st.session_state["LoginVal"]:
 	if UserName == "Admin":
 		ap.Scrapper()
 	else:
+		genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
+	
+		model = genai.GenerativeModel('gemini-pro')
+		
 		prompts = ["Write a program for tower of Hanoi problem in python.",
 		           "Explain concepts of DSA in nutshell.",
 		           "Can I know about your model architecture.",
@@ -56,13 +60,9 @@ if st.session_state["LoginVal"]:
 		if selected_prompt and st.checkbox("Use Above Prompts", value = False):
 			prompt = selected_prompt
 	
-		genai.configure(api_key='AIzaSyBE1HLZuDQHbVz1C6MPD9FcvPbkeJqGrQU')
-	
-		model = genai.GenerativeModel('gemini-pro')
-		
+		st.write(prompt)
 		with st.spinner("GeminiAI is Thinking"):
 			if prompt:
-				st.write(prompt)
 				response = model.generate_content(prompt)
 				
 				Frame1, Frame2, Frame3 = st.tabs(["RESPONSE", "CHAT", "DISCLAIMER"])
